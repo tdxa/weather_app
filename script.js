@@ -45,7 +45,7 @@ form.addEventListener("submit", e => {
         then(response => response.json()).
         then(data =>{
             const {main, name, sys, weather} = data;
-            const icon = `https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png`;
+            const icon = `./icons/${weather[0]["icon"]}.png`;
             
             const li = document.createElement("li");
             li.classList.add("city");
@@ -55,13 +55,11 @@ form.addEventListener("submit", e => {
                 <span>${name}</span>
                 <sup>${sys.country}</sup>
             </h2>
-            <div class="city-temp">${Math.round(main.temp)}
-                <sup>°C</sup>
-            </div>
+            <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
             <figure>
-                <img class="city-icon" src=${icon} alt=${weather[0]["main"]}>
+                <img class="city-icon" src="${icon}" alt=${weather[0]["main"]}>
                 <figcaption>${weather[0]["description"]}</figcaption>
-             </figure>`;
+            </figure>`;
             
             li.innerHTML = markup;
             list.appendChild(li); 
